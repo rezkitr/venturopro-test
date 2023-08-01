@@ -88,6 +88,9 @@ export const dataSlice = createSlice({
         resetVoucher: (state) => {
             state.voucher = null;
         },
+        resetCart: (state) => {
+            state.cartItems = [];
+        },
     },
     extraReducers: {
         [getMenus.fulfilled]: (state, action) => {
@@ -101,6 +104,7 @@ export const dataSlice = createSlice({
     },
 });
 
-export const { addToCart, addQty, subQty, editNote, resetVoucher } = dataSlice.actions;
+export const { addToCart, addQty, subQty, editNote, resetVoucher, resetCart } =
+    dataSlice.actions;
 
 export default dataSlice.reducer;

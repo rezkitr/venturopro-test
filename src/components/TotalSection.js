@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetCart, resetVoucher } from "../redux/slices/dataSlice";
 import { api } from "../utils/api";
 import { formatPrice } from "../utils/util";
 
 const TotalSection = ({ onClose }) => {
+    const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.data.cartItems);
     const voucher = useSelector((state) => state.data.voucher);
     const [total, setTotal] = useState(0);
@@ -42,8 +44,10 @@ const TotalSection = ({ onClose }) => {
                 items,
             };
             const res = await api.post("/order", payload);
-            if (res.data.status !== 200) throw new Error(res.data.message)
-            onClose()
+            if (res.data.status !== 200) throw new Error(res.data.message);
+            onClose();
+            dispatch(resetCart());
+            dispatch(resetVoucher());
         } catch (error) {
             console.log(error);
         }
