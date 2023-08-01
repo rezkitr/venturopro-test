@@ -66,23 +66,19 @@ export const dataSlice = createSlice({
             state.cartItems = updatedCartItems;
         },
         addQty: (state, action) => {
-            const updatedCartItems = state.cartItems.map((item) => {
-                if (item.id === action.payload) {
-                    return { ...item, qty: item.qty + 1 };
-                } else {
-                    return item;
-                }
-            });
+            const updatedCartItems = state.cartItems.map((item) =>
+                item.id === action.payload
+                    ? { ...item, qty: item.qty + 1 }
+                    : item
+            );
             state.cartItems = updatedCartItems;
         },
         subQty: (state, action) => {
-            const updatedCartItems = state.cartItems.map((item) => {
-                if (item.id === action.payload) {
-                    return { ...item, qty: item.qty - 1 };
-                } else {
-                    return item;
-                }
-            });
+            const updatedCartItems = state.cartItems.map((item) =>
+                item.id === action.payload
+                    ? { ...item, qty: item.qty - 1 }
+                    : item
+            );
             state.cartItems = updatedCartItems;
         },
         resetVoucher: (state) => {
