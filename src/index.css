@@ -59,4 +59,9 @@ body {
   .main-btn {
     @apply w-full bg-slate-500 text-white text-sm rounded-sm hover:bg-slate-400;
   }
+
+  button:disabled,
+  button[disabled] {
+	@apply bg-slate-200 hover:bg-slate-200 cursor-not-allowed
+  }
 }
