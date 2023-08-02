@@ -38,18 +38,20 @@ const TotalSection = ({ onClose }) => {
                 harga: item.harga,
                 catatan: item.catatan,
             }));
-            const payload = {
+            let payload = {
                 nominal_diskon: voucher ? voucher.nominal : 0,
                 nominal_pesanan: total,
                 items,
             };
+            if (voucher) payload = { ...payload, voucher_id: voucher.id };
             const res = await api.post("/order", payload);
             if (res.data.status !== 200) throw new Error(res.data.message);
-            onClose();
             dispatch(resetCart());
             dispatch(resetVoucher());
         } catch (error) {
             console.log(error);
+        } finally {
+            onClose();
         }
     };
 
@@ -60,7 +62,11 @@ const TotalSection = ({ onClose }) => {
                 <p>{formatPrice(total)}</p>
             </div>
             <div>
-                <button className="main-btn py-2" onClick={onSubmitOrder}>
+                <button
+                    className="main-btn py-2"
+                    onClick={onSubmitOrder}
+                    disabled={!cartItems.length}
+                >
                     Buat Pesanan
                 </button>
             </div>
