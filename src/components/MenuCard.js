@@ -10,8 +10,8 @@ const MenuCard = ({ menu }) => {
     };
 
     return (
-        <div className="p-3 w-44 bg-white">
-            <div className="w-full h-32 border border-red-400">
+        <div className="p-3 w-full bg-white">
+            <div className="w-full h-32 border border-red-400 mb-3">
                 <img
                     src={menu.gambar}
                     alt="menu"

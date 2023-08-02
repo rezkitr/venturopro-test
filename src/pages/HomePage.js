@@ -19,7 +19,7 @@ const HomePage = () => {
         <>
             <div>
                 <HeaderBar onShowCart={onShowCartPopup} />
-                <div className="mt-6 grid grid-cols-6 gap-3">
+                <div className="mt-6 grid grid-cols-6 2xl:grid-cols-8 gap-3 2xl:gap-6">
                     {menus.map((menu) => (
                         <MenuCard key={menu.id} menu={menu} />
                     ))}
