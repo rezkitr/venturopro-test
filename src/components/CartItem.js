@@ -6,7 +6,7 @@ import QtyButton from "./QtyButton";
 
 const CartItem = ({ item }) => {
     const dispatch = useDispatch();
-    const [note, setNote] = useState(item.note);
+    const [note, setNote] = useState(item.catatan);
 
     useEffect(() => {
         dispatch(editNote({ id: item.id, note }));

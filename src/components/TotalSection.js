@@ -39,7 +39,7 @@ const TotalSection = ({ onClose }) => {
                 catatan: item.catatan,
             }));
             const payload = {
-                nominal_diskon: voucher.nominal,
+                nominal_diskon: voucher ? voucher.nominal : 0,
                 nominal_pesanan: total,
                 items,
             };
